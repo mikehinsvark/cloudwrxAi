@@ -1,0 +1,573 @@
+/*
+ * Dreams Agent Network — color and contrast enhancement.
+ * Load AFTER page.css. Layout, media, copy and calculator behavior stay intact.
+ * Shared .dreams-glow-card effects and pointer coordinates are owned by the host;
+ * this file supplies palette variables only, never glow pseudo-elements or JS.
+ */
+
+#dreams-agent-embed {
+  background: linear-gradient(145deg, #d5e4f4, #c5daed);
+  --dreams-glow-color: 44, 124, 246;
+  --dreams-glow-border: #4a8ddd;
+  --dreams-glow-shadow: rgba(36, 103, 222, 0.22);
+}
+
+#dreams-agent-embed .agent-page {
+  --an-ink: #102d49;
+  --an-navy: #081e3c;
+  --an-blue: #2059d6;
+  --an-gold: #f2c766;
+  --an-muted: #48637e;
+  --an-border: #aec6df;
+  background: #f5f9ff;
+  color: var(--an-ink);
+  border-color: #a8c1dc;
+  box-shadow: 0 24px 70px rgba(12, 43, 81, 0.16);
+}
+
+/* Quiet surfaces and clearly separated sections. */
+#dreams-agent-embed .an-header {
+  background: #fff;
+  border-bottom-color: #b9cde3;
+}
+
+#dreams-agent-embed .an-principles,
+#dreams-agent-embed .an-hero-role,
+#dreams-agent-embed .an-opportunity,
+#dreams-agent-embed .an-earnings,
+#dreams-agent-embed .an-agent-fit,
+#dreams-agent-embed .an-faq,
+#dreams-agent-embed .an-footer-top {
+  border-color: #aec7e1;
+}
+
+#dreams-agent-embed .an-eyebrow {
+  color: #355775;
+}
+
+#dreams-agent-embed .an-nav > a,
+#dreams-agent-embed .an-login,
+#dreams-agent-embed .an-brand small,
+#dreams-agent-embed .an-hero-intro,
+#dreams-agent-embed .an-microcopy,
+#dreams-agent-embed .an-hero-role p,
+#dreams-agent-embed .an-heading-line > p,
+#dreams-agent-embed .an-quiet-label,
+#dreams-agent-embed .an-earnings-story > p:not(.an-eyebrow),
+#dreams-agent-embed .an-faq-heading > p:not(.an-eyebrow),
+#dreams-agent-embed .an-agent-fit > span,
+#dreams-agent-embed .an-footer-top > p,
+#dreams-agent-embed .an-footer-top > div > a {
+  color: #48617b;
+}
+
+#dreams-agent-embed .an-role-icon {
+  background: linear-gradient(135deg, #d8edff, #c8f0f2);
+  border-color: #84b4d6;
+  color: #125a97;
+}
+
+#dreams-agent-embed .an-how,
+#dreams-agent-embed .an-closing {
+  background: linear-gradient(125deg, #0a2549 0%, #12457a 62%, #075069 100%);
+  border-color: #3b729b;
+  --dreams-glow-color: 62, 205, 231;
+  --dreams-glow-border: #64d5ed;
+  --dreams-glow-shadow: rgba(30, 164, 211, 0.25);
+}
+
+#dreams-agent-embed .an-how h2,
+#dreams-agent-embed .an-closing h2 {
+  color: #fff;
+}
+
+#dreams-agent-embed .an-how h2 em,
+#dreams-agent-embed .an-closing h2 em {
+  color: #ffe0a0;
+}
+
+#dreams-agent-embed .an-how .an-eyebrow,
+#dreams-agent-embed .an-closing .an-eyebrow,
+#dreams-agent-embed .an-video-heading > span {
+  color: #a4e5f4;
+}
+
+#dreams-agent-embed .an-section-intro,
+#dreams-agent-embed .an-how-points > p,
+#dreams-agent-embed .an-note,
+#dreams-agent-embed .an-referral-film > p,
+#dreams-agent-embed .an-closing > div > p:not(.an-eyebrow),
+#dreams-agent-embed .an-closing-action > small {
+  color: #d0e2f2;
+}
+
+#dreams-agent-embed .an-how-points svg {
+  color: #80e0f4;
+}
+
+/* Four steps: navy / teal-blue / royal blue / navy. No grid changes. */
+#dreams-agent-embed .an-step-list {
+  border-color: #426d9b;
+  background: #0a2549;
+}
+
+#dreams-agent-embed .an-step {
+  background: linear-gradient(140deg, #143a65, #091f3f);
+  border-color: #52789d;
+  color: #fff;
+  --an-step-icon-ink: #b9ddff;
+  --an-step-icon-tile: #245387;
+  --dreams-glow-color: 94, 164, 255;
+  --dreams-glow-border: #8abaff;
+  --dreams-glow-shadow: rgba(48, 112, 211, 0.28);
+}
+
+#dreams-agent-embed .an-step:nth-child(4n + 2) {
+  background: linear-gradient(140deg, #0b6078, #083c57);
+  --an-step-icon-ink: #bcf9ff;
+  --an-step-icon-tile: #14768c;
+  --dreams-glow-color: 69, 221, 237;
+  --dreams-glow-border: #75e6ef;
+  --dreams-glow-shadow: rgba(15, 168, 188, 0.28);
+}
+
+#dreams-agent-embed .an-step:nth-child(4n + 3) {
+  background: linear-gradient(140deg, #2356c6, #12377f);
+  --an-step-icon-ink: #e0ecff;
+  --an-step-icon-tile: #396bd7;
+  --dreams-glow-color: 121, 178, 255;
+  --dreams-glow-border: #a1c8ff;
+  --dreams-glow-shadow: rgba(50, 110, 241, 0.3);
+}
+
+#dreams-agent-embed .an-step:nth-child(4n + 4) {
+  background: linear-gradient(140deg, #103859, #081d38);
+  --an-step-icon-ink: #ffe2a2;
+  --an-step-icon-tile: #36566e;
+  --dreams-glow-color: 241, 199, 108;
+  --dreams-glow-border: #edcc8c;
+  --dreams-glow-shadow: rgba(211, 163, 63, 0.2);
+}
+
+#dreams-agent-embed .an-step h3 {
+  color: #fff;
+}
+
+#dreams-agent-embed .an-step p,
+#dreams-agent-embed .an-step-top > span {
+  color: #dceaf8;
+}
+
+#dreams-agent-embed .an-step-top {
+  color: var(--an-step-icon-ink);
+}
+
+/* The tile ring adds color without resizing the supplied SVG or its layout box. */
+#dreams-agent-embed .an-step-top > svg {
+  color: var(--an-step-icon-ink);
+  background: var(--an-step-icon-tile);
+  border-radius: 4px;
+  box-shadow: 0 0 0 6px var(--an-step-icon-tile);
+}
+
+/* Bounded context cards; retain the existing three-column / mobile icon grid. */
+#dreams-agent-embed .an-context-row article {
+  background: linear-gradient(145deg, #e1eeff, #d5e8fb);
+  border: 1px solid #a6c7e8;
+  border-top: 2px solid #3679d8;
+  border-radius: 10px;
+  padding: 17px 16px 16px;
+  --dreams-glow-color: 51, 126, 231;
+  --dreams-glow-border: #478bdd;
+  --dreams-glow-shadow: rgba(34, 103, 197, 0.18);
+}
+
+#dreams-agent-embed .an-context-row article:nth-child(3n + 2) {
+  background: linear-gradient(145deg, #dff4f5, #caeaf0);
+  border-color: #92c7d2;
+  border-top-color: #147c91;
+  --dreams-glow-color: 20, 163, 182;
+  --dreams-glow-border: #269bab;
+  --dreams-glow-shadow: rgba(15, 133, 155, 0.19);
+}
+
+#dreams-agent-embed .an-context-row article:nth-child(3n + 3) {
+  background: linear-gradient(145deg, #e6edff, #dbe5ff);
+  border-color: #adc1ec;
+  border-top-color: #4168c6;
+  --dreams-glow-color: 78, 111, 227;
+  --dreams-glow-border: #6687de;
+  --dreams-glow-shadow: rgba(63, 92, 193, 0.18);
+}
+
+#dreams-agent-embed .an-context-row article > span {
+  color: #185ba4;
+}
+
+#dreams-agent-embed .an-context-row article:nth-child(3n + 2) > span {
+  color: #086579;
+}
+
+#dreams-agent-embed .an-context-row h3 {
+  color: #102f50;
+}
+
+#dreams-agent-embed .an-context-row p {
+  color: #3d5b76;
+}
+
+/* The primary income example keeps its gold emphasis. */
+#dreams-agent-embed .an-example:not(.an-example-primary) {
+  background: linear-gradient(140deg, #0b5c70, #0b2e52);
+  border-color: #387f96;
+  --dreams-glow-color: 69, 220, 225;
+  --dreams-glow-border: #70d9e4;
+  --dreams-glow-shadow: rgba(20, 161, 181, 0.25);
+}
+
+#dreams-agent-embed .an-example:not(.an-example-primary) > span,
+#dreams-agent-embed .an-example:not(.an-example-primary) > p,
+#dreams-agent-embed .an-example:not(.an-example-primary) small {
+  color: #d1eaf2;
+}
+
+#dreams-agent-embed .an-example:not(.an-example-primary) > strong {
+  color: #a7f4f3;
+}
+
+#dreams-agent-embed .an-example-primary,
+#dreams-agent-embed .an-month-example {
+  background: linear-gradient(135deg, #173f72, #081e3c);
+  border-color: #48729c;
+  --dreams-glow-color: 242, 199, 102;
+  --dreams-glow-border: #eaca8b;
+  --dreams-glow-shadow: rgba(201, 154, 61, 0.22);
+}
+
+#dreams-agent-embed .an-example-primary > strong,
+#dreams-agent-embed .an-month-example strong {
+  color: #ffe0a0;
+}
+
+#dreams-agent-embed .an-example-primary > span,
+#dreams-agent-embed .an-example-primary > p,
+#dreams-agent-embed .an-example-primary small,
+#dreams-agent-embed .an-month-example .an-eyebrow,
+#dreams-agent-embed .an-month-example > p {
+  color: #d1e2f4;
+}
+
+#dreams-agent-embed .an-bonus-example {
+  background: linear-gradient(125deg, #d9edf9, #cfeef0);
+  border-color: #94bfd5;
+  --dreams-glow-color: 33, 163, 188;
+  --dreams-glow-border: #329bb5;
+  --dreams-glow-shadow: rgba(22, 125, 167, 0.19);
+}
+
+#dreams-agent-embed .an-bonus-example > svg {
+  color: #086d89;
+}
+
+#dreams-agent-embed .an-bonus-example h3 {
+  color: #123a5b;
+}
+
+#dreams-agent-embed .an-bonus-example p:not(.an-eyebrow) {
+  color: #3c5c74;
+}
+
+/* Calculator: colored workbench, light controls, navy results. */
+#dreams-agent-embed .an-workbench {
+  background: linear-gradient(125deg, #daeaff, #d2eaf4 65%, #d7eef1);
+  border-color: #96b8dc;
+  --dreams-glow-color: 58, 140, 236;
+  --dreams-glow-border: #4f92d4;
+  --dreams-glow-shadow: rgba(30, 99, 180, 0.2);
+}
+
+#dreams-agent-embed .an-calc-controls {
+  background: linear-gradient(145deg, #edf8ff, #e1f3f5);
+  border-color: #9fc5d9;
+  --dreams-glow-color: 22, 162, 190;
+  --dreams-glow-border: #3299b3;
+  --dreams-glow-shadow: rgba(18, 121, 155, 0.18);
+}
+
+#dreams-agent-embed .an-calc-result {
+  background: radial-gradient(ellipse at 85% 0%, #1b5798 0%, #0c315e 45%, #081e3c 85%);
+  border-color: #477fae;
+  color: #fff;
+  --dreams-glow-color: 82, 186, 246;
+  --dreams-glow-border: #87d5ff;
+  --dreams-glow-shadow: rgba(36, 123, 211, 0.27);
+}
+
+#dreams-agent-embed .an-workbench > p,
+#dreams-agent-embed .an-workbench header > p,
+#dreams-agent-embed .an-calc-block-heading p:not(.an-eyebrow),
+#dreams-agent-embed .an-calc-note,
+#dreams-agent-embed .an-field,
+#dreams-agent-embed .an-field-help,
+#dreams-agent-embed .an-range-labels {
+  color: #425e77;
+}
+
+#dreams-agent-embed .an-field > label,
+#dreams-agent-embed .an-field legend,
+#dreams-agent-embed .an-field-label,
+#dreams-agent-embed .an-field-heading,
+#dreams-agent-embed .an-range-row label {
+  color: #143e5d;
+}
+
+/* Never inherit white result-card text into white inputs or unselected buttons. */
+#dreams-agent-embed .an-field input[type="number"],
+#dreams-agent-embed .an-field select,
+#dreams-agent-embed .an-range-row input[type="number"] {
+  background: #fff;
+  color: #183d5f;
+  border-color: #88afcd;
+  caret-color: #184d96;
+}
+
+#dreams-agent-embed .an-field select option {
+  background: #fff;
+  color: #183d5f;
+}
+
+#dreams-agent-embed .an-field input[type="range"] {
+  accent-color: #1d61d7;
+}
+
+#dreams-agent-embed .an-calc-tab,
+#dreams-agent-embed .an-segmented button {
+  background: #fff;
+  color: #244f70;
+  border-color: #8db4cf;
+}
+
+#dreams-agent-embed .an-calc-tab[aria-pressed="true"],
+#dreams-agent-embed .an-segmented button[aria-pressed="true"],
+#dreams-agent-embed .an-calc-toolbar .an-segmented button.an-calc-tab[aria-pressed="true"] {
+  background: linear-gradient(125deg, #2059b8, #104c77);
+  color: #fff;
+  border-color: #205ca6;
+}
+
+#dreams-agent-embed .an-calc-reset,
+#dreams-agent-embed .an-reset-button {
+  color: #1c568e;
+  border-bottom-color: #7cadd0;
+}
+
+#dreams-agent-embed .an-calc-secondary-heading {
+  border-top-color: #96b6d4;
+}
+
+#dreams-agent-embed .an-calc-result .an-eyebrow,
+#dreams-agent-embed .an-calc-result > small,
+#dreams-agent-embed .an-calc-result > h3,
+#dreams-agent-embed .an-calc-result .an-calc-note,
+#dreams-agent-embed .an-result-number span,
+#dreams-agent-embed .an-calc-result output.an-result-number > span.an-result-dash,
+#dreams-agent-embed .an-result-unit,
+#dreams-agent-embed .an-result-breakdown dt {
+  color: #d2e6f8;
+}
+
+#dreams-agent-embed .an-result-number,
+#dreams-agent-embed .an-calc-result output.an-result-number > span {
+  color: #ffe0a0;
+}
+
+#dreams-agent-embed .an-result-icon {
+  color: #91e4fa;
+}
+
+#dreams-agent-embed .an-calc-breakdown > div,
+#dreams-agent-embed .an-result-breakdown > div {
+  border-bottom-color: #537b9f;
+}
+
+#dreams-agent-embed .an-calc-breakdown > div {
+  color: #d2e6f8;
+}
+
+#dreams-agent-embed .an-result-breakdown dd {
+  color: #ffe3ac;
+}
+
+#dreams-agent-embed .an-calc-warning {
+  background: #fff0ce;
+  border-color: #d5b56e;
+  color: #644a18;
+}
+
+#dreams-agent-embed .an-calc-result .an-source-link {
+  color: #b0defe;
+}
+
+/* Resource and FAQ contrast without changing their content or dimensions. */
+#dreams-agent-embed .an-resource {
+  background: linear-gradient(120deg, #e0edff, #d7edf4);
+  border-color: #9abbdc;
+  --dreams-glow-color: 45, 142, 216;
+  --dreams-glow-border: #4b96ce;
+  --dreams-glow-shadow: rgba(31, 109, 176, 0.18);
+}
+
+#dreams-agent-embed .an-resource p:not(.an-eyebrow) {
+  color: #405d79;
+}
+
+#dreams-agent-embed .an-faq-list,
+#dreams-agent-embed .an-faq-item {
+  border-color: #acc5df;
+}
+
+#dreams-agent-embed .an-faq-item[open] {
+  background: #e7f1fc;
+}
+
+#dreams-agent-embed .an-faq-item summary {
+  color: #193f62;
+}
+
+#dreams-agent-embed .an-faq-index,
+#dreams-agent-embed .an-faq-item > p {
+  color: #46637e;
+}
+
+/* Disclosures remain deliberately visible, not low-opacity decoration. */
+#dreams-agent-embed .an-film-caption,
+#dreams-agent-embed .an-media-disclosure,
+#dreams-agent-embed .an-examples-footer,
+#dreams-agent-embed .an-team-terms > span,
+#dreams-agent-embed .an-footer-disclosure > p,
+#dreams-agent-embed .an-footer-disclosure > span {
+  color: #4b637a;
+}
+
+#dreams-agent-embed .an-film-caption b {
+  color: #234f79;
+  background: #d6e6fb;
+}
+
+/* Media frame colors only: no image/video treatment or overlay changes. */
+#dreams-agent-embed .an-hero-art,
+#dreams-agent-embed .an-main-film,
+#dreams-agent-embed .an-phone-film,
+#dreams-agent-embed .an-graphic-open {
+  border-color: #3c709a;
+  --dreams-glow-color: 69, 170, 239;
+  --dreams-glow-border: #7dccfa;
+  --dreams-glow-shadow: rgba(40, 117, 203, 0.23);
+}
+
+/* Button families stay explicit; avoid broad white-text button overrides. */
+#dreams-agent-embed .an-button-gold {
+  background: linear-gradient(115deg, #ffe4a5, #efbd53);
+  border-color: #d8a943;
+  color: #152d45 !important;
+}
+
+#dreams-agent-embed .an-button-outline {
+  background: #fff;
+  border-color: #86add3;
+  color: #204e7b;
+}
+
+#dreams-agent-embed .an-text-link,
+#dreams-agent-embed .an-source-link {
+  color: #1b55a3;
+}
+
+#dreams-agent-embed .an-text-link {
+  border-bottom-color: #90b5e0;
+}
+
+/* Remove the base button lift; shared interactions are managed by the host. */
+#dreams-agent-embed .an-button:hover {
+  transform: none;
+}
+
+/* Visible keyboard focus on both pale surfaces and dark card families. */
+#dreams-agent-embed .agent-page :focus-visible {
+  outline: 3px solid #1b59b8;
+  outline-offset: 4px;
+}
+
+#dreams-agent-embed .an-how :focus-visible,
+#dreams-agent-embed .an-step :focus-visible,
+#dreams-agent-embed .an-example :focus-visible,
+#dreams-agent-embed .an-month-example :focus-visible,
+#dreams-agent-embed .an-calc-result :focus-visible,
+#dreams-agent-embed .an-closing :focus-visible,
+#dreams-agent-embed .an-image-dialog :focus-visible,
+#dreams-agent-embed .an-graphic-open:focus-visible {
+  outline-color: #ffe0a0;
+}
+
+#dreams-agent-embed .an-logo-dialog :focus-visible {
+  outline-color: #1b59b8;
+}
+
+#dreams-agent-embed .an-calc-controls:focus-within,
+#dreams-agent-embed .an-calc-result:focus-within,
+#dreams-agent-embed .an-resource:focus-within {
+  border-color: var(--dreams-glow-border);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  #dreams-agent-embed .an-step:hover,
+  #dreams-agent-embed .an-context-row article:hover,
+  #dreams-agent-embed .an-example:hover,
+  #dreams-agent-embed .an-bonus-example:hover,
+  #dreams-agent-embed .an-workbench:hover,
+  #dreams-agent-embed .an-calc-controls:hover,
+  #dreams-agent-embed .an-calc-result:hover,
+  #dreams-agent-embed .an-resource:hover,
+  #dreams-agent-embed .an-month-example:hover {
+    border-color: var(--dreams-glow-border);
+  }
+
+  #dreams-agent-embed .an-button-gold:hover {
+    background: linear-gradient(115deg, #ffebbd, #f5ca6c);
+    border-color: #bf8e2b;
+  }
+
+  #dreams-agent-embed .an-button-outline:hover {
+    background: #e3efff;
+    border-color: #4b86c9;
+    color: #193f6d;
+  }
+
+  #dreams-agent-embed .an-segmented button:not([aria-pressed="true"]):hover,
+  #dreams-agent-embed .an-calc-tab:not([aria-pressed="true"]):hover {
+    background: #dceeff;
+    border-color: #4c8dba;
+    color: #163e61;
+  }
+}
+
+@media (max-width: 640px) {
+  #dreams-agent-embed .an-context-row article {
+    padding: 12px 12px 14px;
+  }
+
+  #dreams-agent-embed .an-step {
+    border-bottom-color: #52789d;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #dreams-agent-embed .an-button,
+  #dreams-agent-embed .dreams-glow-card {
+    transition: none !important;
+  }
+
+  #dreams-agent-embed .an-button:hover {
+    transform: none !important;
+  }
+}

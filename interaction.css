@@ -1,0 +1,153 @@
+/* Dreams v2 interaction layer: scoped, quiet, and keyboard accessible. */
+:is(#dreams-agent-embed, #dreams-client-embed) {
+  box-sizing: border-box;
+  --dreams-glow-color: 64, 189, 248;
+  --dreams-glow-border: #4eaddf;
+  --dreams-nav-ink: #194b80;
+  --dreams-nav-bg: #f8fcff;
+  --dreams-nav-line: #a5c8ed;
+  --dreams-nav-active: #1875c7;
+}
+#dreams-client-embed {
+  --dreams-glow-color: 41, 204, 165;
+  --dreams-glow-border: #45bca4;
+  --dreams-nav-ink: #12675d;
+  --dreams-nav-bg: #f6fffb;
+  --dreams-nav-line: #93cfc1;
+  --dreams-nav-active: #008c7a;
+}
+:is(#dreams-agent-embed, #dreams-client-embed) .dreams-glow-card {
+  position: relative;
+  isolation: isolate;
+  transition: border-color 220ms ease, box-shadow 220ms ease, transform 220ms ease;
+}
+:is(#dreams-agent-embed, #dreams-client-embed) .dreams-glow-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(340px circle at var(--dreams-glow-x, 50%) var(--dreams-glow-y, 50%), rgba(var(--dreams-glow-color), .18), transparent 65%);
+  opacity: 0;
+  transition: opacity 220ms ease;
+  z-index: 0;
+}
+:is(#dreams-agent-embed, #dreams-client-embed) .dreams-glow-card > * { position: relative; z-index: 1; }
+:is(#dreams-agent-embed, #dreams-client-embed) .dreams-glow-card:focus-within {
+  border-color: var(--dreams-glow-border);
+  box-shadow: 0 8px 24px rgba(var(--dreams-glow-color), .17), 0 0 0 1px rgba(var(--dreams-glow-color), .32);
+}
+:is(#dreams-agent-embed, #dreams-client-embed) .dreams-glow-card:focus-within::before { opacity: 1; }
+@media (hover: hover) and (pointer: fine) {
+  :is(#dreams-agent-embed, #dreams-client-embed) .dreams-glow-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--dreams-glow-border);
+    box-shadow: 0 12px 30px rgba(var(--dreams-glow-color), .19), 0 0 0 1px rgba(var(--dreams-glow-color), .38), 0 0 24px rgba(var(--dreams-glow-color), .16);
+  }
+  :is(#dreams-agent-embed, #dreams-client-embed) .dreams-glow-card:hover::before { opacity: 1; }
+}
+:is(#dreams-agent-embed, #dreams-client-embed) .dreams-section-nav {
+  position: fixed;
+  right: max(12px, env(safe-area-inset-right));
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 44px;
+  padding: 5px 2px;
+  max-height: calc(100dvh - 90px);
+  background: var(--dreams-nav-bg);
+  color: var(--dreams-nav-ink);
+  border: 1px solid var(--dreams-nav-line);
+  border-radius: 25px;
+  box-shadow: 0 8px 28px rgba(var(--dreams-glow-color), .18), 0 2px 9px #12384b12;
+  backdrop-filter: blur(14px);
+}
+:is(#dreams-agent-embed, #dreams-client-embed) .dreams-section-nav[hidden],
+:is(#dreams-agent-embed, #dreams-client-embed) .dreams-section-nav [hidden] { display: none !important; }
+:is(#dreams-agent-embed, #dreams-client-embed) .dreams-section-nav button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  padding: 0;
+  cursor: pointer;
+  flex-shrink: 0;
+  font: inherit;
+  border-radius: 20px;
+  transition: color 180ms ease, background 180ms ease;
+}
+:is(#dreams-agent-embed, #dreams-client-embed) .dreams-section-nav button:focus-visible { outline: 2px solid var(--dreams-nav-active); outline-offset: 1px; }
+:is(#dreams-agent-embed, #dreams-client-embed) .dreams-nav-arrow { width: 38px; min-height: 38px; }
+:is(#dreams-agent-embed, #dreams-client-embed) .dreams-nav-arrow:disabled { opacity: .32; cursor: default; }
+:is(#dreams-agent-embed, #dreams-client-embed) .dreams-section-nav button:not(:disabled):hover { background: rgba(var(--dreams-glow-color), .12); }
+:is(#dreams-agent-embed, #dreams-client-embed) .dreams-nav-toggle { width: 38px; min-height: 34px; gap: 3px; font-size: 9px; font-weight: 700; }
+:is(#dreams-agent-embed, #dreams-client-embed) .dreams-nav-toggle svg { transition: transform 180ms ease; }
+:is(#dreams-agent-embed, #dreams-client-embed) .dreams-nav-toggle[aria-expanded="true"] svg { transform: rotate(180deg); }
+:is(#dreams-agent-embed, #dreams-client-embed) .dreams-nav-dots { display: flex; flex-direction: column; align-items: center; width: 100%; overflow-y: auto; scrollbar-width: none; }
+:is(#dreams-agent-embed, #dreams-client-embed) .dreams-nav-dots::-webkit-scrollbar { display: none; }
+:is(#dreams-agent-embed, #dreams-client-embed) .dreams-nav-dots button { width: 38px; min-height: 24px; }
+:is(#dreams-agent-embed, #dreams-client-embed) .dreams-nav-dot { display: block; width: 5px; height: 5px; border-radius: 50%; background: var(--dreams-nav-ink); opacity: .35; }
+:is(#dreams-agent-embed, #dreams-client-embed) .dreams-nav-dots button[aria-current="step"] .dreams-nav-dot { width: 8px; height: 8px; background: var(--dreams-nav-active); opacity: 1; box-shadow: 0 0 8px rgba(var(--dreams-glow-color), .35); }
+:is(#dreams-agent-embed, #dreams-client-embed):has(dialog[open]) .dreams-section-nav { visibility: hidden; }
+@media (max-width: 850px) {
+  :is(#dreams-agent-embed, #dreams-client-embed) .dreams-section-nav {
+    top: auto;
+    bottom: max(12px, env(safe-area-inset-bottom));
+    right: max(12px, env(safe-area-inset-right));
+    transform: none;
+    flex-direction: row;
+    width: auto;
+    max-height: none;
+    padding: 3px 4px;
+  }
+  :is(#dreams-agent-embed, #dreams-client-embed) .dreams-nav-arrow { width: 40px; min-height: 40px; }
+  :is(#dreams-agent-embed, #dreams-client-embed) .dreams-nav-toggle { width: 40px; min-height: 40px; }
+  :is(#dreams-agent-embed, #dreams-client-embed) .dreams-nav-dots {
+    position: absolute;
+    bottom: calc(100% + 9px);
+    right: 0;
+    width: 44px;
+    padding: 5px 2px;
+    border: 1px solid var(--dreams-nav-line);
+    border-radius: 22px;
+    background: var(--dreams-nav-bg);
+    box-shadow: 0 6px 22px rgba(var(--dreams-glow-color), .18);
+    max-height: min(300px, calc(100dvh - 130px));
+  }
+  :is(#dreams-agent-embed, #dreams-client-embed) .an-footer,
+  :is(#dreams-agent-embed, #dreams-client-embed) .cl-footer { padding-bottom: 76px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  :is(#dreams-agent-embed, #dreams-client-embed) .dreams-glow-card,
+  :is(#dreams-agent-embed, #dreams-client-embed) .dreams-glow-card::before,
+  :is(#dreams-agent-embed, #dreams-client-embed) .dreams-section-nav button,
+  :is(#dreams-agent-embed, #dreams-client-embed) .dreams-nav-toggle svg { transition: none !important; animation: none !important; }
+  :is(#dreams-agent-embed, #dreams-client-embed) .dreams-glow-card:hover { transform: none !important; }
+}
+
+/* Separate process cards so the exterior glow is not clipped by the old joined row. */
+#dreams-agent-embed .agent-page .an-step-list {
+  gap: 12px;
+  overflow: visible;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+}
+#dreams-agent-embed .an-step-list > .an-step {
+  border: 1px solid #52789d;
+  border-radius: 9px;
+}
+@media (max-width: 640px) {
+  #dreams-agent-embed .agent-page .an-step-list { gap: 9px; }
+}
+
+#dreams-agent-embed .dreams-section-nav { font-family: "Manrope", Arial, sans-serif; }
+#dreams-client-embed .dreams-section-nav { font-family: "DM Sans", Arial, sans-serif; }
+@media (max-width: 850px) {
+  :is(#dreams-agent-embed, #dreams-client-embed):has(input:focus, select:focus) .dreams-section-nav { visibility: hidden; }
+}
